@@ -62,8 +62,10 @@
   <ItemGroup>
     <Compile Include="Assets\proyecto\Scripts\CraftRecipe.cs" />
     <Compile Include="Assets\proyecto\Scripts\CraftRecipeDatabase.cs" />
+    <Compile Include="Assets\proyecto\Scripts\Inventory.cs" />
     <Compile Include="Assets\proyecto\Scripts\Item.cs" />
     <Compile Include="Assets\proyecto\Scripts\ItemDatabase.cs" />
+    <Compile Include="Assets\proyecto\Scripts\UIItem.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/ivan/Documents/Inventory crafting/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

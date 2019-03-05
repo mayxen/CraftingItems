@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public List<Item> PlayerItems { get; set; }
+    public List<Item> PlayerItems { get; set; } = new List<Item>();
+    [SerializeField]
+    private UIInventory inventoryui;
     ItemDatabase itemDatabase;
 
     private void Awake()
@@ -12,15 +14,21 @@ public class Inventory : MonoBehaviour
         itemDatabase = FindObjectOfType<ItemDatabase>();
     }
 
+    private void Start()
+    {
+        AddItem(1);
+    }
     public void AddItem(int id)
     {
         Item itemToAdd = itemDatabase.GetItem(id);
+        inventoryui.AddItemToUi(itemToAdd);
         PlayerItems.Add(itemToAdd);
     }
 
     public void AddItem(string tittle)
     {
         Item itemToAdd = itemDatabase.GetItem(tittle);
+        inventoryui.AddItemToUi(itemToAdd);
         PlayerItems.Add(itemToAdd);
     }
 

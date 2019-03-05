@@ -12,7 +12,8 @@ public class UIItem : MonoBehaviour
     private void Awake()
     {
         icon = GetComponent<Image>();
-        selectedItem = GameObject.Find("¨SelectedItem").GetComponent<UIItem>();
+        selectedItem = GameObject.Find("SelectedItem").GetComponent<UIItem>();
+        UpdateItem(null);
     }
 
     public void UpdateItem(Item item)

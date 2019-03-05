@@ -16,7 +16,7 @@ public class Item
         this.title = title;
         this.description = description;
         this.stats = stats;
-        this.icon = Resources.Load<Sprite>("Item/"+title);
+        this.icon = Resources.Load<Sprite>("Items/Sprites/"+title);
     }
 
     /**

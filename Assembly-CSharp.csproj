@@ -65,6 +65,7 @@
     <Compile Include="Assets\proyecto\Scripts\Inventory.cs" />
     <Compile Include="Assets\proyecto\Scripts\Item.cs" />
     <Compile Include="Assets\proyecto\Scripts\ItemDatabase.cs" />
+    <Compile Include="Assets\proyecto\Scripts\ItemFollowMouse.cs" />
     <Compile Include="Assets\proyecto\Scripts\SlotPanel.cs" />
     <Compile Include="Assets\proyecto\Scripts\UIInventory.cs" />
     <Compile Include="Assets\proyecto\Scripts\UIItem.cs" />

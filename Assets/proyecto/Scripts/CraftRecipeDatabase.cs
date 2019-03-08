@@ -16,8 +16,14 @@ public class CraftRecipeDatabase : MonoBehaviour
 
     public Item CheckRecipe(int[] recipe)
     {
-        CraftRecipe targetRecipe = Recipes.Find(i => i.requiredItems.SequenceEqual(recipe));
-        return itemDatabase.GetItem(targetRecipe.itemToCraft);
+        foreach (CraftRecipe craftRecipe in Recipes)
+        {
+            if (craftRecipe.requiredItems.OrderBy(i => i).SequenceEqual(recipe.OrderBy(i => i)))
+            {
+                return itemDatabase.GetItem(craftRecipe.itemToCraft);
+            }
+        }
+        return null;
     }
 
     void BuildCraftRecipeDatabase()

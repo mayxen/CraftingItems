@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlotPanel : MonoBehaviour
 {
-    List<UIItem> uiItems = new List<UIItem>();
+    public List<UIItem> uiItems = new List<UIItem>();
     public int numberSlots;
     public GameObject slot;
     // Start is called before the first frame update
@@ -41,5 +41,10 @@ public class SlotPanel : MonoBehaviour
             if (uii.item == null) return true;
         }
         return false;
+    }
+
+    public void EmptyAllSlots()
+    {
+        uiItems.ForEach(i => i.UpdateItem(null));
     }
 }

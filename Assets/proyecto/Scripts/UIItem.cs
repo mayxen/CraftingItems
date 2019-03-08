@@ -9,9 +9,13 @@ public class UIItem : MonoBehaviour, IPointerDownHandler
     public Item item;
     Image icon;
     UIItem selectedItem;
+    public bool craftingSlot = false;
+    private CraftingSlots craftingSlots;
+    public bool craftingResultSlot = false;
 
     private void Awake()
     {
+        craftingSlots = FindObjectOfType<CraftingSlots>();
         icon = GetComponent<Image>();
         selectedItem = GameObject.Find("SelectedItem").GetComponent<UIItem>();
         UpdateItem(null);
@@ -29,25 +33,39 @@ public class UIItem : MonoBehaviour, IPointerDownHandler
         {
             icon.color = Color.clear;
         }
+        if (craftingSlot)
+        {
+            craftingSlots.UpdateRecipe();
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if(this.item != null)
         {
-            if(selectedItem.item != null)
+            UICraftResult craftResult = GetComponent<UICraftResult>();
+            if (craftResult != null && this.item != null && selectedItem.item == null)
             {
-                Item clone = new Item(selectedItem.item);
+                craftResult.PickItem();
                 selectedItem.UpdateItem(this.item);
-                UpdateItem(clone);
+                craftResult.ClearSlots();
             }
-            else
+            else if (!craftingResultSlot)
             {
-                selectedItem.UpdateItem(this.item);
-                UpdateItem(null);
+                if (selectedItem.item != null)
+                {
+                    Item clone = new Item(selectedItem.item);
+                    selectedItem.UpdateItem(this.item);
+                    UpdateItem(clone);
+                }
+                else
+                {
+                    selectedItem.UpdateItem(this.item);
+                    UpdateItem(null);
+                }
             }
         }
-        else if(selectedItem.item != null)
+        else if(selectedItem.item != null && !craftingResultSlot)
         {
             
             UpdateItem(selectedItem.item);
